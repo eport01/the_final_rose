@@ -1,3 +1,6 @@
 <%=@contestant.name %>
 <%=@contestant.bachelorette.season_number%>
 <%=@contestant.bachelorette.description%>
+<%@contestant.outings.each do |outing|%>
+  <%=outing.name%>
+<%end%>
