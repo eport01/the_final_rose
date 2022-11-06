@@ -1,3 +1,6 @@
 <%@bachelorette.contestants.each do |contestant| %>
-  <%=contestant.name%>
+  <%=link_to contestant.name, contestant_path(contestant)%>
+  <%=contestant.age%>
+  <%=contestant.hometown%>
+
 <%end%>

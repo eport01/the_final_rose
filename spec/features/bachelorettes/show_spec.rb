@@ -20,6 +20,7 @@ RSpec.describe 'bachelorettes show page' do
     # require 'pry'; binding.pry
     expect(current_path).to eq(bachelorette_contestants_path(@mary))
     expect(page).to have_content("Mark")
+    save_and_open_page
 
   end
   
