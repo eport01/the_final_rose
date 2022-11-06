@@ -14,5 +14,7 @@ RSpec.describe 'contestants show page' do
   it 'shows me contestants info and season number and description' do 
     visit contestant_path(@mark)
     expect(page).to have_content("Mark")
+    expect(page).to have_content(12)
+    expect(page).to have_content("coolest season")
   end 
 end
