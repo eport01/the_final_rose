@@ -10,19 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_11_06_213007) do
+ActiveRecord::Schema.define(version: 2022_11_06_231429) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "bachelorette_contestants", force: :cascade do |t|
-    t.bigint "bachelorette_id"
-    t.bigint "contestant_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["bachelorette_id"], name: "index_bachelorette_contestants_on_bachelorette_id"
-    t.index ["contestant_id"], name: "index_bachelorette_contestants_on_contestant_id"
-  end
 
   create_table "bachelorettes", force: :cascade do |t|
     t.string "name"
@@ -43,14 +34,16 @@ ActiveRecord::Schema.define(version: 2022_11_06_213007) do
   end
 
   create_table "outings", force: :cascade do |t|
+    t.bigint "bachelorette_id"
+    t.bigint "contestant_id"
     t.string "name"
     t.string "location"
     t.datetime "date"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.index ["bachelorette_id"], name: "index_outings_on_bachelorette_id"
+    t.index ["contestant_id"], name: "index_outings_on_contestant_id"
   end
 
-  add_foreign_key "bachelorette_contestants", "bachelorettes"
-  add_foreign_key "bachelorette_contestants", "contestants"
   add_foreign_key "contestants", "bachelorettes"
+  add_foreign_key "outings", "bachelorettes"
+  add_foreign_key "outings", "contestants"
 end

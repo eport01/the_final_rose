@@ -1,3 +1,5 @@
 <%=@bachelorette.name%>
 <%=@bachelorette.season_number%>
 <%=@bachelorette.description%>
+
+<%=link_to "#{@bachelorette.name}'s Contestants", "/bachelorettes/#{@bachelorette.id}/contestants"%>
