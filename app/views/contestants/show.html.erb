@@ -2,5 +2,5 @@
 <%=@contestant.bachelorette.season_number%>
 <%=@contestant.bachelorette.description%>
 <%@contestant.outings.each do |outing|%>
-  <%=outing.name%>
+  <%=link_to outing.name, outing_path(outing)%>
 <%end%>

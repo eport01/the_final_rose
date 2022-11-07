@@ -18,5 +18,10 @@ RSpec.describe 'contestants show page' do
     expect(page).to have_content("coolest season")
     # require 'pry'; binding.pry
     expect(page).to have_content("Bowling")
+    expect(page).to have_link("Bowling")
+    click_link("Bowling")
+    expect(current_path).to eq(outing_path(@fun))
+    expect(page).to have_content("Bowling")
+
   end 
 end
