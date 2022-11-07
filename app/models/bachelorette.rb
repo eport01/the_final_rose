@@ -6,7 +6,9 @@ class Bachelorette <ApplicationRecord
   end
 
   def contestant_homes
-    contestants.select(:hometown).distinct.pluck(:hometown)
+    # contestants.select(:hometown).distinct.pluck(:hometown)
+    contestants.distinct.pluck(:hometown)
+    # Contestant.joins(:bachelorette).distinct(:hometown).pluck(:hometown)
   end
   
 end

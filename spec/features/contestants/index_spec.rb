@@ -24,7 +24,7 @@ RSpec.describe 'a bachelorettes contestants show page' do
 
   it 'has a unique list of hometowns contestants are from' do 
     visit bachelorette_contestants_path(@mary)
-    expect(page).to have_content("Hometowns: Denver")
+    expect(page).to have_content("Hometowns: [\"Denver\"]")
   end
 
 end 
