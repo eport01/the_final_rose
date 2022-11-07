@@ -1,3 +1,7 @@
 <%=@outing.name%>
 <%=@outing.location%>
 <%=@outing.date.strftime("%A, %B %d, %Y")%>
+Count of Contestants: <%=@outing.contestant_count%>
+<%@outing.contestants.each do |contestant|%>
+  <%=contestant.name%>
+<%end%>
