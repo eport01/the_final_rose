@@ -7,7 +7,7 @@ RSpec.describe 'a bachelorettes contestants show page' do
     @suzie = Bachelorette.create!(name: "Suzie", season_number: 10, description: "great experience")
     @mark = @mary.contestants.create!(name: "Mark", age: 30, hometown: "Denver")
     @fun = Outing.create!(bachelorette_id: @mary, contestant_id: @mark)
-    @steve = @mary.contestants.create!(name: "Steve", age: 29, hometown: "Aurora")
+    @steve = @mary.contestants.create!(name: "Steve", age: 29, hometown: "Denver")
 
   end
 
@@ -20,6 +20,11 @@ RSpec.describe 'a bachelorettes contestants show page' do
     expect(page).to have_link("Mark")
     click_link "Mark"
     expect(current_path).to eq(contestant_path(@mark))
+  end
+
+  it 'has a unique list of hometowns contestants are from' do 
+    visit bachelorette_contestants_path(@mary)
+    expect(page).to have_content("Hometowns: Denver")
   end
 
 end 

@@ -11,7 +11,7 @@ RSpec.describe Bachelorette, type: :model do
     @suzie = Bachelorette.create!(name: "Suzie", season_number: 10, description: "great experience")
     @mark = @mary.contestants.create!(name: "Mark", age: 30, hometown: "Denver")
     @fun = Outing.create!(bachelorette_id: @mary.id, name: "Bowling", location: "Denver", date: "2022-11-06 00:00:00 UTC")
-    @steve = @mary.contestants.create!(name: "Steve", age: 20, hometown: "Aurora")
+    @steve = @mary.contestants.create!(name: "Steve", age: 20, hometown: "Denver")
     ContestantOuting.create!(contestant: @mark, outing: @fun)
     ContestantOuting.create!(contestant: @steve, outing: @fun)
   
@@ -19,5 +19,9 @@ RSpec.describe Bachelorette, type: :model do
 
   it 'can find average age of a bachs contestants' do 
     expect(@mary.contestant_avg).to eq(25)
+  end
+
+  it 'gives a unique list of hometowns' do 
+    expect(@mary.contestant_homes).to eq(["Denver"])
   end
 end
