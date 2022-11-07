@@ -6,7 +6,10 @@ RSpec.describe 'bachelorettes show page' do
     @amy = Bachelorette.create!(name: "Amy", season_number: 8, description: "fun times")
     @suzie = Bachelorette.create!(name: "Suzie", season_number: 10, description: "great experience")
     @mark = @mary.contestants.create!(name: "Mark", age: 30, hometown: "Denver")
-    @fun = Outing.create!(bachelorette_id: @mary, contestant_id: @mark)
+    @fun = Outing.create!(bachelorette_id: @mary.id, name: "Bowling", location: "Denver", date: "2022-11-06 00:00:00 UTC")
+    @steve = @mary.contestants.create!(name: "Steve", age: 20, hometown: "Aurora")
+    ContestantOuting.create!(contestant: @mark, outing: @fun)
+    ContestantOuting.create!(contestant: @steve, outing: @fun)
   
   end
 
@@ -20,7 +23,12 @@ RSpec.describe 'bachelorettes show page' do
     # require 'pry'; binding.pry
     expect(current_path).to eq(bachelorette_contestants_path(@mary))
     expect(page).to have_content("Mark")
-    save_and_open_page
+
+  end
+
+  it 'i see average age of all bachelorettes contestants' do 
+    visit bachelorette_path(@mary) 
+    expect(page).to have_content("Average Age of Contestants: 25")
 
   end
   
